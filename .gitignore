@@ -1,0 +1,70 @@
+# Visual Studio Code
+.vscode/
+.vs/
+
+# JetBrains Rider
+.idea/
+
+# NuGet Packages
+*.nupkg
+*.paket/
+*.dotnet/
+project.lock.json
+packages/
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+[Tt]emp/
+[Tt]ests/
+
+# Visual Studio files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider files
+*.idea/
+
+# Resharper files
+_ReSharper*/
+*.resharper
+*.ReSharper*/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Visual Studio Code files
+.vscode/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Mono-specific files
+mono_crash.*
+
+# Wix Installer files
+*.wixproj
+*.wixobj
+*.wixpdb
+*.wixout
+*.wixlog
+*.wixiobj
+*.wixlib
