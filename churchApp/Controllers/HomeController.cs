@@ -60,7 +60,8 @@ namespace churchApp.Controllers
                     var repoRespone = await repo.PostPrayerRequest(model);
                     if (repoRespone)
                     {
-                        return Ok("Prayer request sent successfully");
+                        
+                        return Ok(new{message="Prayer request sent successfully "});
                     }
                 }
                 return BadRequest(ModelState);
