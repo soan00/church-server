@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using churchApp.Models.Tables;
 
@@ -11,9 +12,11 @@ using churchApp.Models.Tables;
 namespace churchApp.Migrations
 {
     [DbContext(typeof(ContexClass))]
-    partial class ContexClassModelSnapshot : ModelSnapshot
+    [Migration("20240416114602_locationInMeeting")]
+    partial class locationInMeeting
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,7 +36,7 @@ namespace churchApp.Migrations
                     b.Property<DateOnly>("date")
                         .HasColumnType("date");
 
-                    b.Property<TimeOnly>("endTime")
+                    b.Property<TimeOnly?>("endTime")
                         .HasColumnType("time");
 
                     b.Property<string>("location")
@@ -43,7 +46,8 @@ namespace churchApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<TimeOnly>("startTime")
+                    b.Property<TimeOnly?>("startTime")
+                        .IsRequired()
                         .HasColumnType("time");
 
                     b.HasKey("id");

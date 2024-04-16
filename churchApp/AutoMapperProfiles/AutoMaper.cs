@@ -10,6 +10,8 @@ namespace churchApp.AutoMapperProfiles
         {
             CreateMap<PrayerTable,PrayerModel>();
             CreateMap<PrayerModel,PrayerTable>();
+            CreateMap<MeetingTable,MeetingModel>();
+            CreateMap<MeetingModel,MeetingTable>();
         }
     }
 }

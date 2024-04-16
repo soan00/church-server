@@ -12,6 +12,7 @@ namespace churchApp.Models.Tables
         public DbSet<UserTables> Users { get; set; }
         public DbSet<RoleTable> Role { get; set; }
         public DbSet<PrayerTable> Prayer { get; set; }
+        public DbSet<MeetingTable> Meeting { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -17,6 +17,11 @@ namespace churchApp.Repo
             this.mapper = mapper;
         }
 
+        public async Task<IEnumerable<MeetingTable>> GetAllMeetings()
+        {
+            return await _contex.Meeting.ToListAsync();
+        }
+
         public async Task<IEnumerable<PrayerTable>> GetAllPrayers()
         {
             return await _contex.Prayer.Include(u=>u.Users).ToListAsync();
@@ -30,6 +35,19 @@ namespace churchApp.Repo
             return data;
         }
 
+        public async Task<bool> PostMeeting(MeetingModel model)
+        {
+            if (model!=null && model.name != "")   {
+               var map=mapper.Map<MeetingTable>(model);
+                _contex.Meeting.Add(map);
+                await _contex.SaveChangesAsync();
+                return true;
+
+
+            }
+            return false;
+        }
+        
         public async Task<bool> PostPrayerRequest(PrayerModel model)
         {
             if (model.requestFor != null && model.prayerRequest != null)

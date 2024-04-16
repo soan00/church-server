@@ -12,17 +12,17 @@ namespace churchApp.Controllers
     {
         private readonly HomeRepo repo;
         private readonly JwtTokenGeneration jwt;
-    
+
         private readonly AccountRepo accountRepo;
 
-        public HomeController(HomeRepo repo, JwtTokenGeneration jwt,AccountRepo accountRepo)
+        public HomeController(HomeRepo repo, JwtTokenGeneration jwt, AccountRepo accountRepo)
         {
             this.repo = repo;
             this.jwt = jwt;
-         
+
             this.accountRepo = accountRepo;
         }
-      
+
         [Route("[controller]/getPrayer")]
         [HttpGet]
         public async Task<IActionResult> getPrayerRequest()
@@ -41,12 +41,12 @@ namespace churchApp.Controllers
                 throw new Exception(ex.Message);
             }
 
-           
+
         }
         [Authorize]
         [Route("[controller]/postPrayer")]
         [HttpPost]
-        public async Task<IActionResult> postPrayerRequest([FromBody]PrayerModel model)
+        public async Task<IActionResult> postPrayerRequest([FromBody] PrayerModel model)
         {
             try
             {
@@ -60,14 +60,45 @@ namespace churchApp.Controllers
                     var repoRespone = await repo.PostPrayerRequest(model);
                     if (repoRespone)
                     {
-                        
-                        return Ok(new{message="Prayer request sent successfully "});
+
+                        return Ok(new { message = "Prayer request sent successfully " });
                     }
                 }
                 return BadRequest(ModelState);
             }
             catch (Exception ex) { throw new Exception(ex.Message); }
 
+        }
+        [Authorize]
+        [Route("[controller]/getAllMeetings")]
+        [HttpGet]
+        public async Task<IActionResult> getMeetings()
+        {
+            try
+            {
+                var data = await repo.GetAllMeetings();
+
+                return Ok(new { data = data });
+
+
+            }
+            catch (Exception ex) { throw new Exception(ex.Message); }
+        }
+        
+        [Route("[controller]/postMeeting")]
+        [HttpPost]
+        public async Task<IActionResult>postMeetings([FromBody]MeetingModel model)
+        {
+            try {
+            var res=await repo.PostMeeting(model);
+                if(res)
+                    return Ok(new {respone="Meeting created successfully"});
+                else
+                    return BadRequest(new {response="Something went wrong"});
+            }catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }
