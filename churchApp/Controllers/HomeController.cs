@@ -22,7 +22,7 @@ namespace churchApp.Controllers
 
             this.accountRepo = accountRepo;
         }
-
+        [Authorize]
         [Route("[controller]/getPrayer")]
         [HttpGet]
         public async Task<IActionResult> getPrayerRequest()

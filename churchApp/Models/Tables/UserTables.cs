@@ -18,6 +18,6 @@ namespace churchApp.Models.Tables
         public long phoneNo { get; set; }
         [Column("Role Id")]
         public int? roleId { get; set; }     
-        public RoleTable? Role { get; set; }
+        public RoleTable? Role { get; }
     }
 }

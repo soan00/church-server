@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using churchApp.Models.Tables;
+using System.ComponentModel.DataAnnotations;
 
 namespace churchApp.Models
 {
@@ -9,5 +10,6 @@ namespace churchApp.Models
         public string? emailId { get; set; }
         [Required]
         public string? password { get; set; }
+        public UserTables? User { get; set; }
     }
 }

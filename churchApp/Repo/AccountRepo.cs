@@ -14,14 +14,12 @@ namespace churchApp.Repo
         {
             _db = db;
         }
-        public async Task<bool> Login(LoginModel model)
+        public async Task<UserTables?> Login(LoginModel model)
         {
-          var user= await _db.Users.FirstOrDefaultAsync(x=>x.email==model.emailId && x.password==model.password);
-          if(user == null)
-            {
-                return false;
-            }
-            return true;
+          var user= await _db.Users.Include(x=>x.Role).FirstOrDefaultAsync(x=>x.email==model.emailId && x.password==model.password);
+         
+                return user;
+           
         }
 
         public async Task<bool> Signup(UserTables model)

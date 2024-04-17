@@ -25,10 +25,10 @@ namespace churchApp.Controllers
             try
             {
                 var login=await repo.Login(model);
-                if (login)
+                if (login!=null)
                 {
                     var token=Generatoken(model);
-                    return Ok(new {Token=token,email=model.emailId});
+                    return Ok(new {Token=token,email=login.email,role=login.Role.id});
                 }
                    
                 else
@@ -49,7 +49,7 @@ namespace churchApp.Controllers
                     password=model.password
                 };
                 var checkUserExist = await repo.Login(lm);
-                if (!checkUserExist)
+                if (checkUserExist==null)
                 {
                     var sigup = await repo.Signup(model);
                     if (sigup)
