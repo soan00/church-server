@@ -21,7 +21,7 @@ builder.Services.AddTransient<JwtTokenGeneration>();
 builder.Services.AddScoped<IHome,HomeRepo>();
 builder.Services.AddScoped<HomeRepo>();
 builder.Services.AddDbContext<ContexClass>(db =>
-db.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Singleton) ;
+db.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Singleton) ;
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
 {
     opt.TokenValidationParameters = new TokenValidationParameters
